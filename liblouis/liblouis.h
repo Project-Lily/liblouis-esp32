@@ -37,7 +37,11 @@ extern "C" {
 
 // clang-format interacts badly with @foo@
 // clang-format off
-typedef @WIDECHAR_TYPE@ widechar;
+#ifdef ENABLE_UCS4
+typedef unsigned int widechar;
+#else
+typedef unsigned short int widechar;
+#endif
 // clang-format on
 typedef unsigned short formtype;
 
